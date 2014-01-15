@@ -79,6 +79,7 @@ public class Main extends Activity {
 	}
 	
 	private class DefaultTextOnFocusListener implements OnFocusChangeListener {
+		
 		private String defaultText;
 		
 		public DefaultTextOnFocusListener(String defaultText) {
