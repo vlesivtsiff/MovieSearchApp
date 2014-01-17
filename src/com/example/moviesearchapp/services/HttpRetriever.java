@@ -1,5 +1,6 @@
 package com.example.moviesearchapp.services;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,9 +11,14 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import com.example.moviesearchapp.io.FlushedInputStream;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+
+import com.example.moviesearchapp.util.Utils;
+import com.example.moviesearchapp.io.FlushedInputStream;
 
 public class HttpRetriever {
 	
@@ -68,7 +74,7 @@ public class HttpRetriever {
 		InputStream inputStream = null;
 		try {
 			inputStream = this.retrieveStream(url);
-			final Bitmap bitmap = BitmapFactory.decodeStream(new FlushedInputStream());
+			final Bitmap bitmap = BitmapFactory.decodeStream(new FlushedInputStream(inputStream));
 			return bitmap;
 		}
 		finally {
