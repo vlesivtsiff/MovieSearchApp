@@ -19,12 +19,13 @@ public class Movie {
 	public String certification;
 	public String overview;
 	public String released;
+	public String version;
 	public String lastModifiedAt;
-	public ArrayList<Image> imageList;
-	
+	public ArrayList<Image> imagesList;
+		
 	public String retrieveThumbnail() {
-		if(imageList != null && !imageList.isEmpty()) {
-			for(Image movieImage : imageList) {
+		if(imagesList != null && !imagesList.isEmpty()) {
+			for(Image movieImage : imagesList) {
 				if(movieImage.size.equalsIgnoreCase(Image.SIZE_THUMB) &&
 						movieImage.type.equalsIgnoreCase(Image.TYPE_POSTER)) {
 					return movieImage.url;
