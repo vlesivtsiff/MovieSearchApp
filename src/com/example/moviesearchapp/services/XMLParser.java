@@ -48,7 +48,7 @@ public class XMLParser {
 			xmlReader.setContentHandler(movieHandler);
 			xmlReader.parse(new InputSource(new StringReader(xml)));
 			
-			return movieHandler.retrieveMovieList();
+			return movieHandler.retrieveMoviesList();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

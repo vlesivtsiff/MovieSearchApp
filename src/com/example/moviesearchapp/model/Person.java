@@ -11,5 +11,5 @@ public class Person {
 	public String url;
 	public String version;
 	public String lastModifiedAt;
-	public ArrayList<Image> imageList;
+	public ArrayList<Image> imagesList;
 }

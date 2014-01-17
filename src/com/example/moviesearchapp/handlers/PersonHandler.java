@@ -80,10 +80,10 @@ public class PersonHandler extends DefaultHandler {
 			person.lastModifiedAt = buffer.toString();
 		} 
 		else if(localName.equals("image")) {
-			person.imageList.add(personImage);
+			person.imagesList.add(personImage);
 		} 
 		else if(localName.equals("images")) {
-			person.imageList = personImageList;
+			person.imagesList = personImageList;
 		} 
 	}
 
