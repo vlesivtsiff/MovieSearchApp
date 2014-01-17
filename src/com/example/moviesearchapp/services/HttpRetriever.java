@@ -1,6 +1,5 @@
 package com.example.moviesearchapp.services;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -18,7 +17,6 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.moviesearchapp.util.Utils;
-import com.example.moviesearchapp.io.FlushedInputStream;
 
 public class HttpRetriever {
 	
