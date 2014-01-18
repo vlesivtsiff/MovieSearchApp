@@ -1,5 +1,9 @@
 package com.example.moviesearchapp;
 
+import com.example.moviesearchapp.model.Movie;
+import com.example.moviesearchapp.model.Person;
+import com.example.moviesearchapp.services.GenericSeeker;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -23,6 +27,9 @@ public class Main extends Activity {
 	private RadioGroup searchRadioGroup;
 	private TextView searchTypeTextView;
 	private Button searchButton;
+	
+	private GenericSeeker<Movie> movieSeeker = new MovieSeeker();
+	private  GenericSeeker<Person> personSeeker = new PersonSeeker();
 
 	private void findAllViewsById()
 	{
