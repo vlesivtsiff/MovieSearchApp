@@ -3,6 +3,8 @@ package com.example.moviesearchapp;
 import com.example.moviesearchapp.model.Movie;
 import com.example.moviesearchapp.model.Person;
 import com.example.moviesearchapp.services.GenericSeeker;
+import com.example.moviesearchapp.services.MovieSeeker;
+import com.example.moviesearchapp.services.PersonSeeker;
 
 import android.os.Bundle;
 import android.app.Activity;
