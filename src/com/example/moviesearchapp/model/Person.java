@@ -1,7 +1,6 @@
 package com.example.moviesearchapp.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Person implements Serializable {
 	/**

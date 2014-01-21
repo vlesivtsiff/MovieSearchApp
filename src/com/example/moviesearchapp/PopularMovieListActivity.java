@@ -37,7 +37,7 @@ public class PopularMovieListActivity extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		
 		super.onListItemClick(l, v, position, id);
-		SearchMovie popularMovie = popularMoviesAdapter.getItem(position);
+//		SearchMovie popularMovie = popularMoviesAdapter.getItem(position);
 		
 		String imdbId = "tt1411250";//popularMovie.id;
 		if (imdbId == null || imdbId.length() == 0) {

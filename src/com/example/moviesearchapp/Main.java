@@ -2,7 +2,6 @@ package com.example.moviesearchapp;
 
 import java.util.ArrayList;
 
-import com.example.moviesearchapp.model.Movie;
 import com.example.moviesearchapp.model.Person;
 import com.example.moviesearchapp.model.SearchMovie;
 import com.example.moviesearchapp.services.GenericSeeker;

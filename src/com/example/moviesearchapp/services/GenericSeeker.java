@@ -3,8 +3,6 @@ package com.example.moviesearchapp.services;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import com.example.moviesearchapp.model.SearchMovie;
-
 public abstract class GenericSeeker<E> {
 /*
  * Example request

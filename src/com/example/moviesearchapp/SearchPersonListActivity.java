@@ -3,8 +3,8 @@ package com.example.moviesearchapp;
 import java.util.ArrayList;
 
 import android.app.ListActivity;
-import android.content.Intent;
-import android.net.Uri;
+//import android.content.Intent;
+//import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,7 +15,7 @@ import com.example.moviesearchapp.model.Person;
 
 public class SearchPersonListActivity extends ListActivity {
 	
-	private static final String IMDB_BASE_URL = "http://m.imdb.com/title/";
+//	private static final String IMDB_BASE_URL = "http://m.imdb.com/title/";
 	
 	private ArrayList<Person> searchPersonsList;
 	private ArrayAdapter<Person> searchPersonsAdapter;
