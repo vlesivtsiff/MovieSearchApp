@@ -6,9 +6,9 @@ import android.util.Log;
 
 import com.example.moviesearchapp.model.SearchMovie;
 
-public class PopularMovieSeeker extends GenericSeeker<SearchMovie> {
+public class SearchMovieSeeker extends GenericSeeker<SearchMovie> {
 
-	public static final String MOVIE_SEARCH_PATH = "/movie/popular";
+	public static final String MOVIE_SEARCH_PATH = "/search/movie";
 	
 	@Override
 	public ArrayList<SearchMovie> find(String query) {

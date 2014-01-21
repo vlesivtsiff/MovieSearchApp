@@ -20,7 +20,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.moviesearchapp.PopularMoviesListActivity"/>
+            android:name="com.example.moviesearchapp.PopularMovieListActivity"/>
+        <activity
+            android:name="com.example.moviesearchapp.SearchMovieListActivity"/>
+        <activity
+            android:name="com.example.moviesearchapp.SearchPersonListActivity"/>
         </application>    
     
 

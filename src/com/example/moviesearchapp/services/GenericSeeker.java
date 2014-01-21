@@ -3,18 +3,20 @@ package com.example.moviesearchapp.services;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import com.example.moviesearchapp.model.SearchMovie;
+
 public abstract class GenericSeeker<E> {
 /*
  * Example request
  * https://api.themoviedb.org/3/movie/popular?api_key=f243d07dcfe9da6756d5df37fa41989c
+ * https://api.themoviedb.org/3/movie/87421?api_key=f243d07dcfe9da6756d5df37fa41989c
  * */	
 	
-	protected static final String BASE_URL = "http://api.themoviedb.org/3";
+	protected static final String BASE_URL = "https://api.themoviedb.org/3";
 	protected static final String API_KEY = "?api_key=f243d07dcfe9da6756d5df37fa41989c";
-	protected static final String SLASH = "/";
+	protected static final String QUERY = "&query=";
 	
 	protected HttpRetriever httpRetriever = new HttpRetriever();
-	protected XMLParser xmlParser = new XMLParser();
 	protected JSONParser jsonParser = new JSONParser();
 	
 	public abstract ArrayList<E> find(String query);
@@ -27,6 +29,7 @@ public abstract class GenericSeeker<E> {
 		sb.append(BASE_URL);
 		sb.append(retrieveSearchMethodPath());
 		sb.append(API_KEY);
+		sb.append(QUERY);
 		sb.append(URLEncoder.encode(query));
 		return sb.toString();
 	}

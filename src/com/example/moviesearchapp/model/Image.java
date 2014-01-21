@@ -3,6 +3,10 @@ package com.example.moviesearchapp.model;
 import java.io.Serializable;
 
 public class Image implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String SIZE_ORIGINAL = "Original";
 	public static final String SIZE_MID = "mid";
 	public static final String SIZE_COVER = "cover";

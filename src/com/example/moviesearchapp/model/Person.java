@@ -4,13 +4,27 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Person implements Serializable {
-	public String score;
-	public String popularity;
-	public String name;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public static final String TAG_PERSON_ADULT = "adult";
+	public static final String TAG_PERSON_ID = "id";
+	public static final String TAG_PERSON_NAME = "name";
+	public static final String TAG_PERSON_PROFILE_PATH = "profile_path";
+	
+	public boolean adult;
 	public String id;
-	public String bibliography;
-	public String url;
-	public String version;
-	public String lastModifiedAt;
-	public ArrayList<Image> imagesList;
+	public String name;
+	public String profile_path;
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Person: ");
+		builder.append(name);
+		builder.append(".");
+		return builder.toString();
+	}
 }

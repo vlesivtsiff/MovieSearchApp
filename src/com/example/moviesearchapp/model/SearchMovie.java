@@ -2,7 +2,7 @@ package com.example.moviesearchapp.model;
 
 import java.io.Serializable;
 
-public class PopularMovie implements Serializable {
+public class SearchMovie implements Serializable {
 	
 	private static final long serialVersionUID = 0L;
 	

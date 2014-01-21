@@ -1,13 +1,12 @@
 package com.example.moviesearchapp;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.example.moviesearchapp.model.Movie;
 import com.example.moviesearchapp.model.Person;
-import com.example.moviesearchapp.model.PopularMovie;
+import com.example.moviesearchapp.model.SearchMovie;
 import com.example.moviesearchapp.services.GenericSeeker;
-import com.example.moviesearchapp.services.MovieSeeker;
+import com.example.moviesearchapp.services.SearchMovieSeeker;
 import com.example.moviesearchapp.services.PersonSeeker;
 import com.example.moviesearchapp.services.PopularMovieSeeker;
 
@@ -41,8 +40,8 @@ public class Main extends Activity {
 	private TextView searchTypeTextView;
 	private Button searchButton;
 	
-	private GenericSeeker<PopularMovie> popularMovieSeeker = new PopularMovieSeeker();
-	private GenericSeeker<Movie> movieSeeker = new MovieSeeker();
+	private GenericSeeker<SearchMovie> searchMovieSeeker = new SearchMovieSeeker();
+	private GenericSeeker<SearchMovie> popularMovieSeeker = new PopularMovieSeeker();	
 	private GenericSeeker<Person> personSeeker = new PersonSeeker();
 	
 	private ProgressDialog progressDialog;
@@ -176,16 +175,16 @@ public class Main extends Activity {
 		}
     }
 	
-	private class PerformPopularMovieSearchTask extends AsyncTask<String, Void, ArrayList<PopularMovie>> {
+	private class PerformPopularMovieSearchTask extends AsyncTask<String, Void, ArrayList<SearchMovie>> {
 
 		@Override
-		protected ArrayList<PopularMovie> doInBackground(String... arg0) {
-			String query = arg0[0];
+		protected ArrayList<SearchMovie> doInBackground(String... arg0) {
+			String query = "";
 			return popularMovieSeeker.find(query);
 		}
 		
 		@Override
-		protected void onPostExecute(final ArrayList<PopularMovie> result) {
+		protected void onPostExecute(final ArrayList<SearchMovie> result) {
 			runOnUiThread(new Runnable() {
 
 				@Override
@@ -195,32 +194,36 @@ public class Main extends Activity {
 						progressDialog = null;
 					}
 					
-					Intent intent = new Intent(Main.this, PopularMovieListActivity.class);
-					intent.putExtra("popularMovies", result);
-					startActivity(intent);
-					
 					if(result!=null) {
 						longToast("Got " + result.size() + " popular movies");
-						
+
 //						for(PopularMovie popularMovie : result) {
 //							longToast(popularMovie.title + " - " + popularMovie.vote_average);
 //						}
 					}
+					
+					Intent intent = new Intent(Main.this, PopularMovieListActivity.class);
+					intent.putExtra("popularMovies", result);
+					startActivity(intent);
+
 				}
 			});
 		}
 	}
 	
-	private class PerformMovieSearchTask extends AsyncTask<String, Void, ArrayList<Movie>> {
+	private class PerformMovieSearchTask extends AsyncTask<String, Void, ArrayList<SearchMovie>> {
 
 		@Override
-		protected ArrayList<Movie> doInBackground(String... arg0) {
+		protected ArrayList<SearchMovie> doInBackground(String... arg0) {
 			String query = arg0[0];
-			return movieSeeker.find(query);
+			if(query.length() > 0) {
+				return searchMovieSeeker.find(query);
+			}
+			return null;	
 		}
 		
 		@Override
-		protected void onPostExecute(final ArrayList<Movie> result) {
+		protected void onPostExecute(final ArrayList<SearchMovie> result) {
 			runOnUiThread(new Runnable() {
 
 				@Override
@@ -234,6 +237,13 @@ public class Main extends Activity {
 //						for(Movie _movie : result) {
 //							longToast(_movie.name + " - " + _movie.rating);
 //						}
+						Intent intent = new Intent(Main.this, SearchMovieListActivity.class);
+						intent.putExtra("searchMovies", result);
+						startActivity(intent);
+					}
+					else
+					{
+						longToast("Nothing to search!");
 					}
 				}
 			});
@@ -245,7 +255,10 @@ public class Main extends Activity {
 		@Override
 		protected ArrayList<Person> doInBackground(String... params) {
 			String query = params[0];
-			return personSeeker.find(query);
+			if(query.length() > 0) {
+				return personSeeker.find(query);
+			}
+			return null;
 		}
 		
 		@Override
@@ -262,6 +275,13 @@ public class Main extends Activity {
 //						for (Person person : result) {
 //							longToast(person.name);
 //						}
+		    			Intent intent = new Intent(Main.this, SearchPersonListActivity.class);
+						intent.putExtra("searchPersons", result);
+						startActivity(intent);
+					}
+		    		else
+					{
+						longToast("No Persons found!");
 					}
 		    	}
 		    });

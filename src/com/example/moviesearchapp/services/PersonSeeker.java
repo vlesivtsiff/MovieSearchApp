@@ -8,7 +8,7 @@ import com.example.moviesearchapp.model.Person;
 
 public class PersonSeeker extends GenericSeeker<Person> {
 
-	public static final String PERSON_SEARCH_PATH = "/person";
+	public static final String PERSON_SEARCH_PATH = "/search/person";
 	
 	@Override
 	public ArrayList<Person> find(String query) {

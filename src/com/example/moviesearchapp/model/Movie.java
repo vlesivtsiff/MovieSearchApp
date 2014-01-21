@@ -4,10 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Movie implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public boolean adult;
+	public String backdrop_path;
+	public ArrayList<String> belongs_to_collection;
+	public String budget;
+	public ArrayList<Genres> genres;
+	
 	public String score;
 	public String popularity;
 	public boolean translated;
-	public boolean adult;
+	
 	public String language;
 	public String originalName;
 	public String name;
@@ -34,5 +44,10 @@ public class Movie implements Serializable {
 			}
 		}
 		return null;
+	}
+	
+	public class Genres {
+		public String id;
+		public String name;
 	}
 }

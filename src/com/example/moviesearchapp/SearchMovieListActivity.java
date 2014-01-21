@@ -13,12 +13,12 @@ import android.widget.Toast;
 
 import com.example.moviesearchapp.model.SearchMovie;
 
-public class PopularMovieListActivity extends ListActivity {
+public class SearchMovieListActivity extends ListActivity {
 	
 	private static final String IMDB_BASE_URL = "http://m.imdb.com/title/";
 	
-	private ArrayList<SearchMovie> popularMoviesList;
-	private ArrayAdapter<SearchMovie> popularMoviesAdapter;
+	private ArrayList<SearchMovie> searchMoviesList;
+	private ArrayAdapter<SearchMovie> searchMoviesAdapter;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -27,17 +27,17 @@ public class PopularMovieListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_layout);
         
-        popularMoviesList = (ArrayList<SearchMovie>) getIntent().getSerializableExtra("popularMovies");
-        popularMoviesAdapter = new ArrayAdapter<SearchMovie>(this, android.R.layout.simple_list_item_1, popularMoviesList);
+        searchMoviesList = (ArrayList<SearchMovie>) getIntent().getSerializableExtra("searchMovies");
+        searchMoviesAdapter = new ArrayAdapter<SearchMovie>(this, android.R.layout.simple_list_item_1, searchMoviesList);
         
-        setListAdapter(popularMoviesAdapter);
+        setListAdapter(searchMoviesAdapter);
     }
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		
 		super.onListItemClick(l, v, position, id);
-		SearchMovie popularMovie = popularMoviesAdapter.getItem(position);
+		SearchMovie popularMovie = searchMoviesAdapter.getItem(position);
 		
 		String imdbId = "tt1411250";//popularMovie.id;
 		if (imdbId == null || imdbId.length() == 0) {
@@ -56,3 +56,4 @@ public class PopularMovieListActivity extends ListActivity {
 	}
 
 }
+	
