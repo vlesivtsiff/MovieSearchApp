@@ -33,7 +33,7 @@ public class XMLParser {
 			xmlReader.parse(new InputSource(new StringReader(xml)));
 			
 			return personHandler.retrievePersonList();
-		}
+		}	
 		catch(Exception e) {
 			e.printStackTrace();
 			return null;

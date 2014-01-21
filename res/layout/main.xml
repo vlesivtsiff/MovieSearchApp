@@ -18,8 +18,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <RadioButton
-            android:id="@+id/movie_search_radio_button"
+            android:id="@+id/popular_movie_search_radio_button"
             android:checked="true"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/popular_movies"
+            />
+        <RadioButton
+            android:id="@+id/movie_search_radio_button"
+            android:checked="false"
             android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:text="@string/movies"

@@ -20,7 +20,7 @@ public class PersonSeeker extends GenericSeeker<Person> {
 		String url = constructSearchUrl(query);
 		String response = httpRetriever.retrieve(url);
 		Log.d(getClass().getSimpleName(), response);
-		return null;
+		return jsonParser.parsePersonsResponse(response);
 	}
 
 	@Override

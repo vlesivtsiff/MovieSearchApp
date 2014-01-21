@@ -4,28 +4,28 @@ import java.util.ArrayList;
 
 import android.util.Log;
 
-import com.example.moviesearchapp.model.Movie;
+import com.example.moviesearchapp.model.PopularMovie;
 
-public class MovieSeeker extends GenericSeeker<Movie> {
+public class PopularMovieSeeker extends GenericSeeker<PopularMovie> {
 
 	public static final String MOVIE_SEARCH_PATH = "/movie/popular";
 	
 	@Override
-	public ArrayList<Movie> find(String query) {
-		ArrayList<Movie> moviesList = retrieveMoviesList(query);
+	public ArrayList<PopularMovie> find(String query) {
+		ArrayList<PopularMovie> moviesList = retrieveMoviesList(query);
 		return moviesList;
 	}
 
-	private ArrayList<Movie> retrieveMoviesList(String query) {
+	private ArrayList<PopularMovie> retrieveMoviesList(String query) {
 		String url = constructSearchUrl(query);
 		String response = httpRetriever.retrieve(url);
 		Log.d(getClass().getSimpleName(), response);
-		return jsonParser.parseMoviesResponse(response);
+		return jsonParser.parsePopularMoviesResponse(response);
 	}
 
 	@Override
-	public ArrayList<Movie> find(String query, int maxResults) {
-		ArrayList<Movie> moviesList = retrieveMoviesList(query);
+	public ArrayList<PopularMovie> find(String query, int maxResults) {
+		ArrayList<PopularMovie> moviesList = retrieveMoviesList(query);
 		return retrieveFirstResults(moviesList, maxResults);
 	}
 

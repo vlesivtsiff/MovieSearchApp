@@ -15,6 +15,7 @@ public abstract class GenericSeeker<E> {
 	
 	protected HttpRetriever httpRetriever = new HttpRetriever();
 	protected XMLParser xmlParser = new XMLParser();
+	protected JSONParser jsonParser = new JSONParser();
 	
 	public abstract ArrayList<E> find(String query);
 	public abstract ArrayList<E> find(String query, int maxResults);
