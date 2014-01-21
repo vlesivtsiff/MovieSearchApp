@@ -1,7 +1,6 @@
 package com.example.moviesearchapp;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.example.moviesearchapp.model.Movie;
 import com.example.moviesearchapp.model.Person;
@@ -195,17 +194,18 @@ public class Main extends Activity {
 						progressDialog = null;
 					}
 					
-					Intent intent = new Intent(Main.this, PopularMovieListActivity.class);
-					intent.putExtra("popularMovies", result);
-					startActivity(intent);
-					
 					if(result!=null) {
 						longToast("Got " + result.size() + " popular movies");
-						
+
 //						for(PopularMovie popularMovie : result) {
 //							longToast(popularMovie.title + " - " + popularMovie.vote_average);
 //						}
 					}
+					
+					Intent intent = new Intent(Main.this, PopularMovieListActivity.class);
+					intent.putExtra("popularMovies", result);
+					startActivity(intent);
+
 				}
 			});
 		}
