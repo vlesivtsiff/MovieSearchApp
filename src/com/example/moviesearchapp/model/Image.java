@@ -1,6 +1,8 @@
 package com.example.moviesearchapp.model;
 
-public class Image {
+import java.io.Serializable;
+
+public class Image implements Serializable {
 	public static final String SIZE_ORIGINAL = "Original";
 	public static final String SIZE_MID = "mid";
 	public static final String SIZE_COVER = "cover";

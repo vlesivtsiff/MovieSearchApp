@@ -1,8 +1,9 @@
 package com.example.moviesearchapp.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Person {
+public class Person implements Serializable {
 	public String score;
 	public String popularity;
 	public String name;

@@ -1,5 +1,6 @@
 package com.example.moviesearchapp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.moviesearchapp.model.Movie;
@@ -16,6 +17,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -174,16 +176,16 @@ public class Main extends Activity {
 		}
     }
 	
-	private class PerformPopularMovieSearchTask extends AsyncTask<String, Void, List<PopularMovie>> {
+	private class PerformPopularMovieSearchTask extends AsyncTask<String, Void, ArrayList<PopularMovie>> {
 
 		@Override
-		protected List<PopularMovie> doInBackground(String... arg0) {
+		protected ArrayList<PopularMovie> doInBackground(String... arg0) {
 			String query = arg0[0];
 			return popularMovieSeeker.find(query);
 		}
 		
 		@Override
-		protected void onPostExecute(final List<PopularMovie> result) {
+		protected void onPostExecute(final ArrayList<PopularMovie> result) {
 			runOnUiThread(new Runnable() {
 
 				@Override
@@ -192,8 +194,14 @@ public class Main extends Activity {
 						progressDialog.dismiss();
 						progressDialog = null;
 					}
+					
+					Intent intent = new Intent(Main.this, PopularMovieListActivity.class);
+					intent.putExtra("popularMovies", result);
+					startActivity(intent);
+					
 					if(result!=null) {
 						longToast("Got " + result.size() + " popular movies");
+						
 //						for(PopularMovie popularMovie : result) {
 //							longToast(popularMovie.title + " - " + popularMovie.vote_average);
 //						}
@@ -203,16 +211,16 @@ public class Main extends Activity {
 		}
 	}
 	
-	private class PerformMovieSearchTask extends AsyncTask<String, Void, List<Movie>> {
+	private class PerformMovieSearchTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
 		@Override
-		protected List<Movie> doInBackground(String... arg0) {
+		protected ArrayList<Movie> doInBackground(String... arg0) {
 			String query = arg0[0];
 			return movieSeeker.find(query);
 		}
 		
 		@Override
-		protected void onPostExecute(final List<Movie> result) {
+		protected void onPostExecute(final ArrayList<Movie> result) {
 			runOnUiThread(new Runnable() {
 
 				@Override
@@ -232,16 +240,16 @@ public class Main extends Activity {
 		}
 	}
 	
-	private class PerformPersonSearchTask extends AsyncTask<String, Void, List<Person>> {
+	private class PerformPersonSearchTask extends AsyncTask<String, Void, ArrayList<Person>> {
 		
 		@Override
-		protected List<Person> doInBackground(String... params) {
+		protected ArrayList<Person> doInBackground(String... params) {
 			String query = params[0];
 			return personSeeker.find(query);
 		}
 		
 		@Override
-		protected void onPostExecute(final List<Person> result) {			
+		protected void onPostExecute(final ArrayList<Person> result) {			
 			runOnUiThread(new Runnable() {
 		    	@Override
 		    	public void run() {

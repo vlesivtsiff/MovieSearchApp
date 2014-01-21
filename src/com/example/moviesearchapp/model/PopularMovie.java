@@ -1,6 +1,11 @@
 package com.example.moviesearchapp.model;
 
-public class PopularMovie {
+import java.io.Serializable;
+
+public class PopularMovie implements Serializable {
+	
+	private static final long serialVersionUID = 0L;
+	
 	public static final String TAG_MOVIE_ADULT = "adult";
 	public static final String TAG_MOVIE_BACKDROP_PATH = "backdrop_path";
 	public static final String TAG_MOVIE_ID = "id";
@@ -22,4 +27,13 @@ public class PopularMovie {
 	public String title;
 	public String vote_average;
 	public String vote_count;
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Movie: ");
+		builder.append(title);
+		builder.append(".");
+		return builder.toString();
 	}
+}
