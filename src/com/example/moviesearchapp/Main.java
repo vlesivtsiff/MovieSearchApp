@@ -193,9 +193,10 @@ public class Main extends Activity {
 						progressDialog = null;
 					}
 					if(result!=null) {
-						for(PopularMovie popularMovie : result) {
-							longToast(popularMovie.title + " - " + popularMovie.vote_average);
-						}
+						longToast("Got " + result.size() + " popular movies");
+//						for(PopularMovie popularMovie : result) {
+//							longToast(popularMovie.title + " - " + popularMovie.vote_average);
+//						}
 					}
 				}
 			});
@@ -221,9 +222,10 @@ public class Main extends Activity {
 						progressDialog = null;
 					}
 					if(result!=null) {
-						for(Movie _movie : result) {
-							longToast(_movie.name + " - " + _movie.rating);
-						}
+						longToast("Got " + result.size() + " movies");
+//						for(Movie _movie : result) {
+//							longToast(_movie.name + " - " + _movie.rating);
+//						}
 					}
 				}
 			});
@@ -248,9 +250,10 @@ public class Main extends Activity {
 		    			progressDialog = null;
 		    		}
 		    		if (result != null) {
-						for (Person person : result) {
-							longToast(person.name);
-						}
+		    			longToast("Got " + result.size() + " persons");
+//						for (Person person : result) {
+//							longToast(person.name);
+//						}
 					}
 		    	}
 		    });
