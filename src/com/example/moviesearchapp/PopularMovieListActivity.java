@@ -7,18 +7,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.moviesearchapp.model.SearchMovie;
+import com.example.moviesearchapp.ui.MoviesAdapter;
 
 public class PopularMovieListActivity extends ListActivity {
 	
 	private static final String IMDB_BASE_URL = "http://m.imdb.com/title/";
 	
-	private ArrayList<SearchMovie> popularMoviesList;
-	private ArrayAdapter<SearchMovie> popularMoviesAdapter;
+	private ArrayList<SearchMovie> popularMoviesList = new ArrayList<SearchMovie>();
+	private MoviesAdapter popularMoviesAdapter;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -27,10 +27,21 @@ public class PopularMovieListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_layout);
         
+        popularMoviesAdapter = new MoviesAdapter(this, R.layout.movie_data_row, popularMoviesList);
         popularMoviesList = (ArrayList<SearchMovie>) getIntent().getSerializableExtra("popularMovies");
-        popularMoviesAdapter = new ArrayAdapter<SearchMovie>(this, android.R.layout.simple_list_item_1, popularMoviesList);
         
         setListAdapter(popularMoviesAdapter);
+        
+        if (popularMoviesList!=null && !popularMoviesList.isEmpty()) {
+            
+        	popularMoviesAdapter.notifyDataSetChanged();
+        	popularMoviesAdapter.clear();
+            for (int i = 0; i < ((popularMoviesList.size() < 5) ? popularMoviesList.size() : 5); i++) {
+            	popularMoviesAdapter.add(popularMoviesList.get(i));
+            }
+        }
+        
+        popularMoviesAdapter.notifyDataSetChanged();
     }
 	
 	@Override

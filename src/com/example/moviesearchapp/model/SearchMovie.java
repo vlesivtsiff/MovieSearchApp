@@ -6,6 +6,8 @@ public class SearchMovie implements Serializable {
 	
 	private static final long serialVersionUID = 0L;
 	
+	public static final String THUMB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w92";
+	
 	public static final String TAG_MOVIE_ADULT = "adult";
 	public static final String TAG_MOVIE_BACKDROP_PATH = "backdrop_path";
 	public static final String TAG_MOVIE_ID = "id";
@@ -35,5 +37,12 @@ public class SearchMovie implements Serializable {
 		builder.append(title);
 		builder.append(".");
 		return builder.toString();
+	}
+
+	public String retrieveThumbnail() {
+		if(poster_path.length() > 0) {
+			return THUMB_IMAGE_BASE_URL + backdrop_path;
+		}
+		return null;
 	}
 }
