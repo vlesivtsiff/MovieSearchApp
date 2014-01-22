@@ -12,13 +12,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.moviesearchapp.model.SearchMovie;
+import com.example.moviesearchapp.ui.MoviesAdapter;
 
 public class SearchMovieListActivity extends ListActivity {
 	
 	private static final String IMDB_BASE_URL = "http://m.imdb.com/title/";
 	
-	private ArrayList<SearchMovie> searchMoviesList;
-	private ArrayAdapter<SearchMovie> searchMoviesAdapter;
+	private ArrayList<SearchMovie> searchMoviesList = new ArrayList<SearchMovie>();
+	private MoviesAdapter searchMoviesAdapter;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -27,10 +28,21 @@ public class SearchMovieListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_layout);
         
+        searchMoviesAdapter = new MoviesAdapter(this, R.layout.movie_data_row, searchMoviesList);
         searchMoviesList = (ArrayList<SearchMovie>) getIntent().getSerializableExtra("searchMovies");
-        searchMoviesAdapter = new ArrayAdapter<SearchMovie>(this, android.R.layout.simple_list_item_1, searchMoviesList);
         
         setListAdapter(searchMoviesAdapter);
+        
+        if (searchMoviesList!=null && !searchMoviesList.isEmpty()) {
+            
+        	searchMoviesAdapter.notifyDataSetChanged();
+        	searchMoviesAdapter.clear();
+            for (int i = 0; i < ((searchMoviesList.size() < 5) ? searchMoviesList.size() : 5); i++) {
+            	searchMoviesAdapter.add(searchMoviesList.get(i));
+            }
+        }
+        
+        searchMoviesAdapter.notifyDataSetChanged();
     }
 	
 	@Override
