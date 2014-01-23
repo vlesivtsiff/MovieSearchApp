@@ -40,9 +40,13 @@ public class SearchMovie implements Serializable {
 	}
 
 	public String retrieveThumbnail() {
+		String res;
 		if(poster_path.length() > 0) {
-			return THUMB_IMAGE_BASE_URL + backdrop_path;
+			res = THUMB_IMAGE_BASE_URL + poster_path;
 		}
-		return null;
+		else {
+			res = "https://www.google.com.ua/images/srpr/chrome_ntp_white_logo2.png";
+		}
+		return res;
 	}
 }

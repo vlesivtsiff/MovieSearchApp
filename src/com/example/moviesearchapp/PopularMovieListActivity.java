@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.moviesearchapp.model.SearchMovie;
 import com.example.moviesearchapp.ui.MoviesAdapter;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class PopularMovieListActivity extends ListActivity {
 	
@@ -27,6 +29,11 @@ public class PopularMovieListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_layout);
         
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+        		getApplicationContext()
+        		).build();
+        ImageLoader.getInstance().init(config);
+
         popularMoviesAdapter = new MoviesAdapter(this, R.layout.movie_data_row, popularMoviesList);
         popularMoviesList = (ArrayList<SearchMovie>) getIntent().getSerializableExtra("popularMovies");
         
@@ -36,7 +43,7 @@ public class PopularMovieListActivity extends ListActivity {
             
         	popularMoviesAdapter.notifyDataSetChanged();
         	popularMoviesAdapter.clear();
-            for (int i = 0; i < ((popularMoviesList.size() < 5) ? popularMoviesList.size() : 5); i++) {
+            for (int i = 0; i < popularMoviesList.size(); i++) {
             	popularMoviesAdapter.add(popularMoviesList.get(i));
             }
         }

@@ -37,7 +37,7 @@ public class SearchMovieListActivity extends ListActivity {
             
         	searchMoviesAdapter.notifyDataSetChanged();
         	searchMoviesAdapter.clear();
-            for (int i = 0; i < ((searchMoviesList.size() < 5) ? searchMoviesList.size() : 5); i++) {
+            for (int i = 0; i < searchMoviesList.size(); i++) {
             	searchMoviesAdapter.add(searchMoviesList.get(i));
             }
         }
