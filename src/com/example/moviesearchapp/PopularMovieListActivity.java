@@ -38,7 +38,7 @@ public class PopularMovieListActivity extends ListActivity {
             
         	popularMoviesAdapter.notifyDataSetChanged();
         	popularMoviesAdapter.clear();
-        	int size = (popularMoviesList.size() > 5) ? 5 : popularMoviesList.size(); 
+        	int size = popularMoviesList.size();// > 5 ? 5 : popularMoviesList.size(); 
             for (int i = 0; i < size; i++) {
             	popularMoviesAdapter.add(popularMoviesList.get(i));
             }

@@ -73,18 +73,18 @@ public class MoviesAdapter extends ArrayAdapter<SearchMovie> {
             ImageView imageView = (ImageView) view.findViewById(R.id.movie_thumb_icon);
             String url = searchMovie.retrieveThumbnail();
             
-//            if (url!=null) {
-//                Bitmap bitmap = fetchBitmapFromCache(url);
-//                if (bitmap==null) {                
-//                    new BitmapDownloaderTask(imageView).execute(url);
-//                }
-//                else {
-//                    imageView.setImageBitmap(bitmap);
-//                }
-//            }
-//            else {
-//                imageView.setImageBitmap(null);
-//            }
+            if (url!=null) {
+                Bitmap bitmap = fetchBitmapFromCache(url);
+                if (bitmap==null) {                
+                    new BitmapDownloaderTask(imageView).execute(url);
+                }
+                else {
+                    imageView.setImageBitmap(bitmap);
+                }
+            }
+            else {
+                imageView.setImageBitmap(null);
+            }
             
         }
         
