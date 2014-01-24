@@ -28,11 +28,6 @@ public class PopularMovieListActivity extends ListActivity {
     	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_layout);
-        
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-        		getApplicationContext()
-        		).build();
-        ImageLoader.getInstance().init(config);
 
         popularMoviesAdapter = new MoviesAdapter(this, R.layout.movie_data_row, popularMoviesList);
         popularMoviesList = (ArrayList<SearchMovie>) getIntent().getSerializableExtra("popularMovies");
@@ -43,7 +38,8 @@ public class PopularMovieListActivity extends ListActivity {
             
         	popularMoviesAdapter.notifyDataSetChanged();
         	popularMoviesAdapter.clear();
-            for (int i = 0; i < popularMoviesList.size(); i++) {
+        	int size = (popularMoviesList.size() > 5) ? 5 : popularMoviesList.size(); 
+            for (int i = 0; i < size; i++) {
             	popularMoviesAdapter.add(popularMoviesList.get(i));
             }
         }

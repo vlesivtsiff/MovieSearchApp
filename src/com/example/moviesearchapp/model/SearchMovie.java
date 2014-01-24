@@ -41,12 +41,12 @@ public class SearchMovie implements Serializable {
 
 	public String retrieveThumbnail() {
 		String res;
-		if(poster_path.length() > 0) {
-			res = THUMB_IMAGE_BASE_URL + poster_path;
-		}
-		else {
-			res = "https://www.google.com.ua/images/srpr/chrome_ntp_white_logo2.png";
-		}
+//		if(poster_path.length() > 0) {
+//			res = THUMB_IMAGE_BASE_URL + poster_path;
+//		}
+//		else {
+			res = "https://yt3.ggpht.com/-b2IKiX6WiV4/AAAAAAAAAAI/AAAAAAAAAAA/L_i4w667kIk/s48-c-k-no/photo.jpg";
+//		}
 		return res;
 	}
 }
