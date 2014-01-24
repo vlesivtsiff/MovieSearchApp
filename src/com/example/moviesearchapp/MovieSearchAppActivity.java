@@ -27,7 +27,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Main extends Activity {
+public class MovieSearchAppActivity extends Activity {
 	
 	private static final String EMPTY_STRING = "";
 	
@@ -142,7 +142,7 @@ public class Main extends Activity {
 	
 	private void performSearch(String query) {
         
-    	progressDialog = ProgressDialog.show(Main.this,
+    	progressDialog = ProgressDialog.show(MovieSearchAppActivity.this,
         		"Please wait...", "Retrieving data...", true, true);
     	
         if (popularMoviesSearchRadioButton.isChecked()) {
@@ -201,7 +201,7 @@ public class Main extends Activity {
 //						}
 					}
 					
-					Intent intent = new Intent(Main.this, PopularMovieListActivity.class);
+					Intent intent = new Intent(MovieSearchAppActivity.this, PopularMovieListActivity.class);
 					intent.putExtra("popularMovies", result);
 					startActivity(intent);
 
@@ -236,7 +236,7 @@ public class Main extends Activity {
 //						for(Movie _movie : result) {
 //							longToast(_movie.name + " - " + _movie.rating);
 //						}
-						Intent intent = new Intent(Main.this, SearchMovieListActivity.class);
+						Intent intent = new Intent(MovieSearchAppActivity.this, SearchMovieListActivity.class);
 						intent.putExtra("searchMovies", result);
 						startActivity(intent);
 					}
@@ -274,7 +274,7 @@ public class Main extends Activity {
 //						for (Person person : result) {
 //							longToast(person.name);
 //						}
-		    			Intent intent = new Intent(Main.this, SearchPersonListActivity.class);
+		    			Intent intent = new Intent(MovieSearchAppActivity.this, SearchPersonListActivity.class);
 						intent.putExtra("searchPersons", result);
 						startActivity(intent);
 					}
