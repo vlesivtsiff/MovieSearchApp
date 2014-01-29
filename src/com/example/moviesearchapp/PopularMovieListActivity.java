@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.example.moviesearchapp.model.SearchMovie;
 import com.example.moviesearchapp.ui.MoviesAdapter;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 public class PopularMovieListActivity extends ListActivity {
 	
@@ -21,6 +21,8 @@ public class PopularMovieListActivity extends ListActivity {
 	
 	private ArrayList<SearchMovie> popularMoviesList = new ArrayList<SearchMovie>();
 	private MoviesAdapter popularMoviesAdapter;
+	
+	DisplayImageOptions options;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -33,6 +35,16 @@ public class PopularMovieListActivity extends ListActivity {
         popularMoviesList = (ArrayList<SearchMovie>) getIntent().getSerializableExtra("popularMovies");
         
         setListAdapter(popularMoviesAdapter);
+        
+        options = new DisplayImageOptions.Builder().
+        		showImageOnLoading(R.drawable.ic_stub).
+        		showImageForEmptyUri(R.drawable.ic_empty).
+        		showImageOnFail(R.drawable.ic_error).
+        		cacheInMemory(true).
+        		cacheOnDisc(true).
+        		considerExifParams(true).
+        		displayer(new RoundedBitmapDisplayer(20)).
+        		build();
         
         if (popularMoviesList!=null && !popularMoviesList.isEmpty()) {
             

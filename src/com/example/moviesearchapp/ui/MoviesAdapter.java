@@ -9,6 +9,8 @@ import com.example.moviesearchapp.R;
 import com.example.moviesearchapp.io.FlushedInputStream;
 import com.example.moviesearchapp.model.SearchMovie;
 import com.example.moviesearchapp.services.HttpRetriever;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 
 import android.app.Activity;
 import android.content.Context;
@@ -73,14 +75,8 @@ public class MoviesAdapter extends ArrayAdapter<SearchMovie> {
             ImageView imageView = (ImageView) view.findViewById(R.id.movie_thumb_icon);
             String url = searchMovie.retrieveThumbnail();
             
-            if (url!=null) {
-                Bitmap bitmap = fetchBitmapFromCache(url);
-                if (bitmap==null) {                
-                    new BitmapDownloaderTask(imageView).execute(url);
-                }
-                else {
-                    imageView.setImageBitmap(bitmap);
-                }
+            if (url != null) {
+               	ImageLoader.getInstance().displayImage(url, imageView);
             }
             else {
                 imageView.setImageBitmap(null);

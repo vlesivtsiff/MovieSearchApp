@@ -2,16 +2,20 @@ package com.example.moviesearchapp;
 
 import java.util.ArrayList;
 
+import com.example.moviesearchapp.TheApplication;
+
 import com.example.moviesearchapp.model.Person;
 import com.example.moviesearchapp.model.SearchMovie;
 import com.example.moviesearchapp.services.GenericSeeker;
 import com.example.moviesearchapp.services.SearchMovieSeeker;
 import com.example.moviesearchapp.services.PersonSeeker;
 import com.example.moviesearchapp.services.PopularMovieSeeker;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface;
